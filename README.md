@@ -1,6 +1,6 @@
 # PREEMPT: Proactive Robustness Evaluation under Editing for Media Protection Techniques
 
-**Accepted by WACV 2027.** &nbsp;[Paper](https://arxiv.org/abs/2610.24205) · [Project page](#)
+**Accepted by WACV 2027.** &nbsp;[Paper](https://arxiv.org/abs/2610.24205) · [Project page](https://seevi-lab.github.io/PREEMPT_Proactive-Robustness_Evaluation/)
 
 **PREEMPT** evaluates how long proactive image protections — adversarial perturbations and invisible
 watermarks — stay effective when a protected image is edited once or many times in a row.
