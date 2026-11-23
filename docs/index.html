@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="PREEMPT: Proactive Robustness Evaluation under Editing for Media Protection Techniques">
+  <meta name="description" content="PREEMPT evaluates how long proactive image protections, adversarial perturbations and watermarks, stay effective under one-shot and sequential image editing. WACV 2027.">
+  <meta name="keywords" content="image protection, adversarial perturbation, watermarking, image editing, robustness evaluation, diffusion models, computer vision">
+  <meta name="author" content="Qiuyu Tang, Aparna Bharati">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="PREEMPT: Proactive Robustness Evaluation under Editing for Media Protection Techniques">
+  <meta property="og:description" content="A framework for evaluating proactive image protection under one-shot and sequential editing. WACV 2027.">
+  <meta property="og:image" content="static/images/framework.jpg">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="PREEMPT: Proactive Robustness Evaluation under Editing for Media Protection Techniques">
+  <meta name="citation_publication_date" content="2027">
+  <meta name="citation_conference_title" content="IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>PREEMPT | WACV 2027</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+
+  <!-- Critical CSS -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <!-- PREEMPT-specific additions to the template -->
+  <style>
+    .metric-block { margin: 1.5rem 0 0.5rem; }
+    .metric-block .metric-name { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .metric-block .metric-note { color: #4a4a4a; font-size: 0.95rem; }
+    .metric-block math { font-size: 1.35rem; }
+    .formula-scroll { overflow-x: auto; padding: 0.4rem 0; }
+    .teaser img, .figure-block img { width: 100%; height: auto; border-radius: 6px; }
+    .figure-block { margin-top: 1.5rem; }
+    .results-carousel .item img { max-height: 420px; width: auto; max-width: 100%; margin: 0 auto; display: block; }
+    .findings li { margin-bottom: 0.6rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://arxiv.org/abs/2509.13711" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>StyleProtect: Safeguarding Artistic Identity in Fine-tuned Diffusion Models</h5>
+            <p>A perturbation defense against style mimicry that updates only selected cross-attention layers.</p>
+            <span class="work-venue">CVPR Workshops 2026</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">PREEMPT: Proactive Robustness Evaluation under Editing for Media Protection Techniques</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://www.qiuyutang.com" target="_blank">Qiuyu Tang</a>,</span>
+              <span class="author-block"><a href="https://www.aparnabharati.com" target="_blank">Aparna Bharati</a></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Colorado State University (Work done at Lehigh University)<br>Accepted by WACV 2027</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- TODO: Paper link -->
+                <span class="link-block">
+                  <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- TODO: Supplementary material link -->
+                <span class="link-block">
+                  <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Supplementary</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/SeeVi-Lab/PREEMPT_Proactive-Robustness_Evaluation" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2610.24205" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser image -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="static/images/framework.jpg" alt="Overview of PREEMPT: a One-Shot Edit branch with transformation-based and semantic edits, and a Sequential Edit branch with chains of simple and complex edits." loading="eager">
+        <h2 class="subtitle has-text-centered">
+          <b>PREEMPT</b> evaluates proactive image protection under one-shot edits and under long sequences of
+          edits, and tracks how much protection survives after every step.
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End teaser image -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Proactive image protection methods aim to defend visual content against unauthorized manipulation
+              and generative misuse by embedding protective signals into images before release. Evaluating whether
+              these protections remain effective under image editing is therefore critical. However, existing
+              evaluations remain largely limited to one-shot edits, providing only a static view of robustness while
+              overlooking its evolution under realistic multi-step editing workflows. To systematically characterize
+              robustness dynamics under sequential editing across various protection paradigms, we introduce PREEMPT,
+              a holistic evaluation framework. It evaluates protection robustness under both one-shot and sequential
+              editing scenarios, covering image transformations, semantic edits, homogeneous and heterogeneous edit
+              compositions. To enable consistent analysis across protection paradigms with different underlying
+              objectives, PREEMPT normalizes task-specific effectiveness into protection survival trajectories and
+              summarizes long-horizon robustness through trajectory-based diagnostics. Using this framework, we reveal
+              that degradation behaviors remain hidden under conventional one-shot evaluation. We further find that
+              perturbation- and watermark-based protection methods exhibit fundamentally different failure modes, and
+              that the first semantic edit largely determines subsequent degradation trajectories. PREEMPT provides a
+              standardized protocol for studying long-horizon robustness and offers new insights into the degradation
+              dynamics of proactive image protection.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <!-- Evaluation pipeline -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Evaluation Pipeline</h2>
+          <div class="content has-text-justified">
+            <p>
+              <b>One-Shot Edit.</b> Each protected image is edited once, either by an image transformation
+              (Gaussian blur, JPEG compression, crop-and-resize, horizontal flip, brightness/contrast) or by a
+              semantic edit in one of four categories: Content, Attribute, Style, and Spatial. Semantic edits are
+              executed by InstructPix2Pix and Stable Diffusion 2.1.
+            </p>
+            <p>
+              <b>Sequential Edit.</b> Each protected image is edited repeatedly. <i>Simple chains</i> repeat semantic
+              edits from one category (content-only C1, attribute-only C2, style-only C3, spatial-only C4).
+              <i>Mixed chains</i> combine semantic edits with image transformations to simulate practical editing
+              workflows. The default chain depth is d = 4.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="figure-block">
+        <img src="static/images/trajectories.jpg" alt="Three heterogeneous editing trajectories over depth 0 to 4 for a face, a painting, and a pair of sunglasses." loading="lazy">
+        <h2 class="subtitle has-text-centered is-6 mt-3">
+          Representative heterogeneous editing trajectories. Rows correspond to faces, artworks, and objects.
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End evaluation pipeline -->
+
+  <!-- Metrics -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Protection Survival Representation</h2>
+          <div class="content has-text-justified">
+            <p>
+              Perturbation-based methods are measured by semantic similarity (ArcFace for faces, CSD for artworks,
+              DINOv2 for objects) and watermark-based methods by message retrieval accuracy. PREEMPT expresses both
+              as a survival trajectory over editing depth.
+            </p>
+          </div>
+
+          <div class="metric-block">
+            <div class="metric-name">Protection Survival Ratio (PSR)</div>
+            <div class="formula-scroll">
+              <math display="block"><mrow><mover><mi>S</mi><mo>~</mo></mover><mo>(</mo><mi>d</mi><mo>)</mo><mo>=</mo><mfrac><mrow><mi>S</mi><mo>(</mo><mi>d</mi><mo>)</mo></mrow><mrow><mi>S</mi><mo>(</mo><mn>0</mn><mo>)</mo></mrow></mfrac></mrow></math>
+            </div>
+            <div class="metric-note">S(d) is the protection metric after d edits; S(0) is measured on the protected, unedited image.</div>
+          </div>
+
+          <div class="metric-block">
+            <div class="metric-name">Protection Survival Curve</div>
+            <div class="formula-scroll">
+              <math display="block"><mrow><mo>{</mo><mover><mi>S</mi><mo>~</mo></mover><mo>(</mo><mn>0</mn><mo>)</mo><mo>,</mo><mover><mi>S</mi><mo>~</mo></mover><mo>(</mo><mn>1</mn><mo>)</mo><mo>,</mo><mo>…</mo><mo>,</mo><mover><mi>S</mi><mo>~</mo></mover><mo>(</mo><mi>D</mi><mo>)</mo><mo>}</mo></mrow></math>
+            </div>
+            <div class="metric-note">Starts at 1 and shows how protection effectiveness evolves throughout the editing chain.</div>
+          </div>
+
+          <div class="metric-block">
+            <div class="metric-name">Protection AUC (PAUC)</div>
+            <div class="formula-scroll">
+              <math display="block"><mrow><mtext>PAUC</mtext><mo>=</mo><mfrac><mn>1</mn><mi>D</mi></mfrac><munderover><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>D</mi><mo>−</mo><mn>1</mn></mrow></munderover><mfrac><mrow><mover><mi>S</mi><mo>~</mo></mover><mo>(</mo><mi>d</mi><mo>)</mo><mo>+</mo><mover><mi>S</mi><mo>~</mo></mover><mo>(</mo><mi>d</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></mfrac></mrow></math>
+            </div>
+            <div class="metric-note">Normalized to [0, 1]; larger values indicate stronger robustness throughout the editing process.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End metrics -->
+
+  <!-- Results carousel -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3 has-text-centered">Results</h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item">
+            <img src="static/images/survival_curves.png" alt="Protection survival curves under homogeneous semantic chains and heterogeneous mixed chains." loading="lazy">
+            <h2 class="subtitle has-text-centered">
+              Protection survival curves under homogeneous semantic chains (left) and heterogeneous mixed chains
+              (right). Robustness evolves progressively with editing depth rather than remaining a static endpoint.
+            </h2>
+          </div>
+          <div class="item">
+            <img src="static/images/paradigm_curves.png" alt="Protection survival curves aggregated by protection paradigm." loading="lazy">
+            <h2 class="subtitle has-text-centered">
+              Survival curves aggregated by protection paradigm. Perturbation- and watermark-based methods exhibit
+              distinct robustness evolution patterns under sequential editing.
+            </h2>
+          </div>
+          <div class="item">
+            <img src="static/images/rank_change.png" alt="Average rank change from one-shot to long-horizon evaluation." loading="lazy">
+            <h2 class="subtitle has-text-centered">
+              Average rank change from one-shot (d = 1) to long-horizon (d = 4) evaluation. One-shot rankings are not
+              consistently preserved.
+            </h2>
+          </div>
+          <div class="item">
+            <img src="static/images/first_edit.png" alt="Robustness trajectories grouped by the type of the first edit." loading="lazy">
+            <h2 class="subtitle has-text-centered">
+              Trajectories grouped by the first edit. Physical-first trajectories stay largely unchanged until the
+              first semantic edit; semantic-first trajectories change immediately.
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End results carousel -->
+
+  <!-- Key findings -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Key Findings</h2>
+          <div class="content has-text-left">
+            <ul class="findings">
+              <li><b>Robustness evolves paradigm-specifically.</b> Perturbation-based methods change sharply after the
+                first edit and then diverge across methods; watermark-based methods degrade more smoothly.</li>
+              <li><b>One-shot robustness does not predict long-horizon robustness.</b> One-shot scores and PAUC show
+                only a moderate association (r ≈ 0.40, R² ≈ 0.16), and method rankings change between d = 1 and d = 4.</li>
+              <li><b>The first semantic edit dominates.</b> On homogeneous semantic chains it accounts for 63%–93% of the
+                total degradation; on heterogeneous chains the share drops to 44%–52%.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End key findings -->
+
+  <!-- BibTeX citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@inproceedings{preempt2027,
+  title     = {PREEMPT: Proactive Robustness Evaluation under Editing for Media Protection Techniques},
+  author    = {Tang, Qiuyu and Bharati, Aparna},
+  booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  year      = {2027}
+}</code></pre>
+    </div>
+  </section>
+  <!-- End BibTeX citation -->
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

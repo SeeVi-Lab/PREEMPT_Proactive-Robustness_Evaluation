@@ -1,0 +1,30 @@
+name: preempt
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - setuptools<81             # openai-clip imports pkg_resources
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu121
+      - torch==2.5.1+cu121
+      - torchvision==0.20.1+cu121
+      - diffusers==0.36.0
+      - transformers==4.57.6
+      - accelerate==1.10.1
+      - safetensors==0.7.0
+      - huggingface_hub==0.36.2
+      - numpy==2.0.2
+      - pandas==2.3.3
+      - scipy==1.13.1
+      - scikit-image==0.24.0
+      - pillow==11.3.0
+      - pyyaml==6.0.3
+      - tqdm==4.70.0
+      - lpips==0.1.4
+      - insightface==1.0.1
+      - onnxruntime==1.19.2
+      - opencv-python==5.0.0.93
+      - opencv-python-headless==5.0.0.93
+      - open-clip-torch==3.3.0
+      - openai-clip==1.0.1

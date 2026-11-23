@@ -1,0 +1,15 @@
+# Runtime outputs
+records/
+data/
+tmp/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Environment / local overrides
+.env
+*.local
+
+# OS
+.DS_Store

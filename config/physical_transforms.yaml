@@ -1,0 +1,24 @@
+transforms:
+  jpeg_q50:
+    type: jpeg
+    quality: 50
+
+  jpeg_q70:
+    type: jpeg
+    quality: 70
+
+  gaussian_blur:
+    type: gaussian_blur
+    radius: 2.0
+
+  crop_resize:
+    type: crop_resize
+    crop_ratio: 0.85
+
+  brightness_contrast:
+    type: brightness_contrast
+    brightness: 1.15
+    contrast: 1.15
+
+  horizontal_flip:
+    type: horizontal_flip
